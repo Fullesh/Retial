@@ -1,12 +1,17 @@
 from django.db import models
 
-# Create your models here.
+NULLABLE = {'blank': True, 'null': True}
 
 
-class Factory(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Название')
-    email = models.EmailField(verbose_name='E-mail')
-    country = models.CharField(max_length=30, verbose_name='Страна')
-    city = models.CharField(max_length=30, verbose_name='Город')
-    street = models.CharField(max_length=30, verbose_name='Улица')
-    apartment = models.CharField(max_length=30, verbose_name='Номер дома')
+class Product(models.Model):
+    product_name = models.CharField(max_length=50, verbose_name='Название продукта')
+    product_description = models.TextField(verbose_name='Описание продукта', **NULLABLE)
+
+    def __str__(self):
+        return f'{self.product_name}, {self.product_description}'
+
+    class Meta:
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
+
+
