@@ -3,6 +3,7 @@ from rest_framework.response import Response
 
 from retail.models import Network
 from retail.serializers import NetworkSerializer
+from users.permissions import IsActive
 
 
 # Create your views here.
@@ -10,21 +11,25 @@ from retail.serializers import NetworkSerializer
 class NetworkRetrieveAPIView(RetrieveAPIView):
     serializer_class = NetworkSerializer
     queryset = Network.objects.all()
+    permission_classes = [IsActive]
 
 
 class NetworkListAPIView(ListAPIView):
     serializer_class = NetworkSerializer
     queryset = Network.objects.all()
+    permission_classes = [IsActive]
 
 
 class NetworkRetrieveAPIView(RetrieveAPIView):
     serializer_class = NetworkSerializer
     queryset = Network.objects.all()
+    permission_classes = [IsActive]
 
 
 class NetworkUpdateAPIView(UpdateAPIView):
     serializer_class = NetworkSerializer
     queryset = Network.objects.all()
+    permission_classes = [IsActive]
 
     def update(self, request, *args, **kwargs):
         partial = kwargs.pop('partial', False)
@@ -40,4 +45,5 @@ class NetworkUpdateAPIView(UpdateAPIView):
 class NetworkDeleteAPIView(DestroyAPIView):
     serializer_class = NetworkSerializer
     queryset = Network.objects.all()
+    permission_classes = [IsActive]
 
