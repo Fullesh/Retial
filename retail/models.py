@@ -31,7 +31,7 @@ class Network(models.Model):
     supplier = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name='Поставщик', **NULLABLE)
     debt = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Задолженность перед поставщиком р., кк.',
                                default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата и время создания')
     link_type = models.IntegerField(choices=link_types, verbose_name='Уровень в иерархии')
 
     def __str__(self):
