@@ -1,5 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.generics import RetrieveAPIView, ListAPIView, RetrieveUpdateAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.generics import RetrieveAPIView, ListAPIView, UpdateAPIView, DestroyAPIView, CreateAPIView
 from rest_framework.response import Response
 
 from retail.models import Network
@@ -23,12 +23,6 @@ class NetworkListAPIView(ListAPIView):
     filterset_fields = ['country',]
 
 
-class NetworkRetrieveAPIView(RetrieveAPIView):
-    serializer_class = NetworkSerializer
-    queryset = Network.objects.all()
-    permission_classes = [IsActive]
-
-
 class NetworkUpdateAPIView(UpdateAPIView):
     serializer_class = NetworkSerializer
     queryset = Network.objects.all()
@@ -50,3 +44,8 @@ class NetworkDeleteAPIView(DestroyAPIView):
     queryset = Network.objects.all()
     permission_classes = [IsActive]
 
+
+class NetworkCreateAPIView(CreateAPIView):
+    serializer_class = NetworkSerializer
+    queryset = Network.objects.all()
+    permission_classes = [IsActive]
