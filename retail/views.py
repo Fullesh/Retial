@@ -1,3 +1,4 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.generics import RetrieveAPIView, ListAPIView, RetrieveUpdateAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.response import Response
 
@@ -18,6 +19,8 @@ class NetworkListAPIView(ListAPIView):
     serializer_class = NetworkSerializer
     queryset = Network.objects.all()
     permission_classes = [IsActive]
+    filter_backends = [DjangoFilterBackend,]
+    filterset_fields = ['country',]
 
 
 class NetworkRetrieveAPIView(RetrieveAPIView):
